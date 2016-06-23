@@ -1,19 +1,24 @@
 var path = require('path');
 var webpack = require('webpack');
-
 module.exports = {
-  devtool: 'eval',
+  devtool: 'hidden-source-map',
   entry: [
-    'webpack-hot-middleware/client',
-    './src/index'
+    './src/index.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    filename: '[name].production.js',
+    publicPath: '/'
+  },
+  resolve:{
+    extensions: ['', '.js', '.jsx'],
+    modules: [
+      'src',
+      'node_modules',
+    ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
   module: {
     loaders: [{

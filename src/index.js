@@ -5,8 +5,8 @@ import { createStore } from 'redux'
 import todoApp from './reducers'
 import App from './components/App'
 
-let store = createStore(todoApp)
-
+const initialState = window.__INITIAL_STATE__;
+let store = createStore(todoApp, initialState);
 render(
   <Provider store={store}>
     <App />
